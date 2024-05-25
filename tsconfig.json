@@ -6,7 +6,8 @@
     "lib": ["DOM", "ES2023"],
     "allowJs": true,
     "declaration": true,
-    "outDir": "./dist/lib/es6"
+    "outDir": "./dist/lib/es6",
+    "esModuleInterop": true
   },
   "include": ["./src/**/*"]
 }
