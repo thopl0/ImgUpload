@@ -1,0 +1,34 @@
+{
+  "name": "image-upload-wc",
+  "version": "1.0.0",
+  "description": "Web Component that handles image upload inside your form.",
+  "main": "lib/esNext/src/index.js",
+  "module": "lib/es6/src/index.js",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thopl0/ImgUpload"
+  },
+  "files": [
+    "lib",
+    "CHANGELOG.md",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "keywords": [
+    "javascript",
+    "utils",
+    "utilities",
+    "image",
+    "upload",
+    "web",
+    "component"
+  ],
+  "author": "thopl0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thopl0/ImgUpload/issues"
+  },
+  "homepage": "https://github.com/thopl0/ImgUpload/#readme"
+}
