@@ -3,11 +3,12 @@ const styles = `
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     height: fit-content;
+    margin-inline: auto;
   }
   .image-upload-label {
     margin-bottom: 10px;
