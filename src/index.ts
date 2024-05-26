@@ -1,5 +1,5 @@
-import styles from "./styles.js";
-import { handleFormSubmit } from "./formHandler.js";
+import styles from "./styles";
+import { handleFormSubmit } from "./formHandler";
 
 class ImageUploader extends HTMLElement {
   private fileInput: HTMLInputElement;
