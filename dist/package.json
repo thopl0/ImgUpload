@@ -1,6 +1,6 @@
 {
   "name": "image-upload-wc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Web Component that handles image upload inside your form.",
   "main": "lib/esNext/index.js",
   "module": "lib/es6/index.js",
