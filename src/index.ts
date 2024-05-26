@@ -136,6 +136,6 @@ class ImageUploader extends HTMLElement {
   }
 }
 
-customElements.define("image-uploader", ImageUploader);
-
-export default ImageUploader;
+export function defineImageUploader() {
+  customElements.define("image-uploader", ImageUploader);
+}
