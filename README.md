@@ -16,7 +16,7 @@ npm install image-upload-wc
 
 Include the `image-upload-wc` component in your HTML:
 
-```
+```html
 <script type="module">
   import { defineImageUpload } from "image-upload-wc";
   defineImageUpload("image-upload-wc");
@@ -54,7 +54,7 @@ The `image-upload-wc` component comes with several customizable properties and e
 
 #### Example
 
-```
+```html
 <form id="uploadForm" action="/postForm" method="post">
   <image-upload-wc
     multiple
