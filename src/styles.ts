@@ -33,9 +33,27 @@ const styles = `
     margin-top: 10px;
   }
   .image-upload-preview {
-    width: 120px;
+    width: 250px;
     object-fit: cover;
     border: 1px solid #ccc;
+    position: relative;
+  }
+  .image-upload-preview-img {
+    width: 100%;
+    height: 100%;
+  }
+  .image-upload-remove-preview {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
 `;
 
