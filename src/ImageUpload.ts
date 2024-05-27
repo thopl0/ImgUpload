@@ -1,7 +1,8 @@
-import { handleFormSubmit } from "./formHandler.js";
 import { initEventListeners } from "./eventListeners.js";
 import { render } from "./render.js";
 import { initializeAttributes, attributeChanged } from "./attributes.js";
+import { closeIcon } from "./icons.js";
+import { previewImage } from "./imagePreview.js";
 
 export class ImageUpload extends HTMLElement {
   public uploadContainer: HTMLDivElement;
@@ -10,7 +11,7 @@ export class ImageUpload extends HTMLElement {
   public fileInput: HTMLInputElement;
   public previewContainer: HTMLDivElement;
   public previews: HTMLImageElement[];
-  private selectedFiles: File[] = [];
+  public selectedFiles: File[] = [];
 
   constructor() {
     super();
@@ -135,46 +136,11 @@ export class ImageUpload extends HTMLElement {
   }
 
   connectedCallback() {
-    initEventListeners(this);
     render(this);
     initializeAttributes(this);
+    initEventListeners(this);
 
     // Intercept form submission to add the selected images to the form
-    const form = this.closest("form");
-    if (form) {
-      form.addEventListener("submit", (event) =>
-        handleFormSubmit(event, this.selectedFiles)
-      );
-    }
-  }
-
-  handleDragOver(event: DragEvent) {
-    event.preventDefault();
-    if (event.dataTransfer?.files.length > 0) {
-      this.style.cursor = "grabbing";
-    }
-  }
-
-  handleDragLeave(event: DragEvent) {
-    event.preventDefault();
-    this.style.cursor = "default";
-  }
-
-  handleDrop(event: DragEvent) {
-    event.preventDefault();
-    const files = Array.from(event.dataTransfer?.files || []);
-    if (files.length > 0) {
-      this.addFiles(files);
-    }
-    this.style.cursor = "default";
-  }
-
-  handleFileSelect(event: Event) {
-    const input = event.target as HTMLInputElement;
-    const files = Array.from(input.files || []);
-    if (files.length > 0) {
-      this.addFiles(files);
-    }
   }
 
   addFiles(files: File[]) {
@@ -186,17 +152,6 @@ export class ImageUpload extends HTMLElement {
 
     //clear existing previews and render new ones adding the new files
     this.previewContainer.innerHTML = "";
-    this.selectedFiles.forEach((file) => this.previewImage(file));
-  }
-
-  previewImage(file: File) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const preview = document.createElement("img");
-      preview.classList.add("image-upload-preview");
-      preview.src = e.target?.result as string;
-      this.previewContainer.appendChild(preview);
-    };
-    reader.readAsDataURL(file);
+    this.selectedFiles.forEach((file) => previewImage(file, this));
   }
 }
