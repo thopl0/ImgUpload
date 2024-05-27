@@ -1,4 +1,4 @@
-import { ImageUpload } from "./ImageUpload";
+import { ImageUpload } from "./ImageUpload.js";
 
 export function initializeAttributes(component: ImageUpload) {
   component.uploadContainer = component.shadowRoot.querySelector(

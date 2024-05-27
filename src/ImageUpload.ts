@@ -1,7 +1,6 @@
 import { initEventListeners } from "./eventListeners.js";
 import { render } from "./render.js";
 import { initializeAttributes, attributeChanged } from "./attributes.js";
-import { closeIcon } from "./icons.js";
 import { previewImage } from "./imagePreview.js";
 
 export class ImageUpload extends HTMLElement {
