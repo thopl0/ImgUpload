@@ -1,10 +1,4 @@
-import { ImageUpload } from "./ImageUpload";
-
-export function initializeEventListeners(component: ImageUpload) {
-  component.addEventListener("dragover", handleDragOver.bind(component));
-  component.addEventListener("dragleave", handleDragLeave.bind(component));
-  component.addEventListener("drop", handleDrop.bind(component));
-}
+import { ImageUpload } from "./ImageUpload.js";
 
 export function handleFileSelect(this: ImageUpload, event: Event) {
   const input = event.target as HTMLInputElement;
@@ -35,25 +29,26 @@ export function handleDrop(this: ImageUpload, event: DragEvent) {
   this.style.cursor = "default";
 }
 
-ImageUpload.prototype.addFiles = function (files: File[]) {
-  if (!this.multiple) {
-    this.selectedFiles = files.slice(0, 1);
-  } else {
-    this.selectedFiles.push(...files);
-  }
+export function handleFormSubmit(event: Event, selectedFiles: File[]) {
+  event.preventDefault();
 
-  // Clear existing previews and render new ones adding the new files
-  this.previewContainer.innerHTML = "";
-  this.selectedFiles.forEach((file) => this.previewImage(file));
-};
+  const form = event.target as HTMLFormElement;
+  const formData = new FormData(form);
 
-ImageUpload.prototype.previewImage = function (file: File) {
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const preview = document.createElement("img");
-    preview.classList.add("image-upload-preview");
-    preview.src = e.target?.result as string;
-    this.previewContainer.appendChild(preview);
+  // Append selected files to formData
+  selectedFiles.forEach((file, index) => {
+    formData.append(`file${index}`, file);
+  });
+
+  // Create an XMLHttpRequest to submit the form data
+  const xhr = new XMLHttpRequest();
+  xhr.open(form.method, form.action, true);
+  xhr.onload = function () {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      console.log("Form submitted successfully:", xhr.responseText);
+    } else {
+      console.error("Form submission failed:", xhr.statusText);
+    }
   };
-  reader.readAsDataURL(file);
-};
+  xhr.send(formData);
+}
