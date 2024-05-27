@@ -4,6 +4,7 @@ import {
   handleDragLeave,
   handleDrop,
   handleFileSelect,
+  handleFormSubmit,
 } from "./handlers.js";
 
 export function initEventListeners(component: ImageUpload) {
@@ -19,4 +20,11 @@ export function initEventListeners(component: ImageUpload) {
     "change",
     handleFileSelect.bind(component)
   );
+
+  const form = this.closest("form");
+  if (form) {
+    form.addEventListener("submit", (event) =>
+      handleFormSubmit(event, this.selectedFiles)
+    );
+  }
 }
