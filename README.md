@@ -17,8 +17,13 @@ npm install image-upload-wc
 Include the `image-upload-wc` component in your HTML:
 
 ```
-<form id="uploadForm">
-  <image-uploader multiple></image-uploader>
+<script type="module">
+  import { defineImageUpload } from "image-upload-wc";
+  defineImageUpload("image-upload-wc");
+</script>
+
+<form id="uploadForm" action="/postForm" method="post">
+  <image-upload-wc multiple></image-upload-wc>
   <button type="submit">Submit</button>
 </form>
 ```
@@ -28,7 +33,8 @@ Include the `image-upload-wc` component in your HTML:
 If you are using a module bundler, you can import the component:
 
 ```javascript
-import "image-upload-wc";
+import { defineImageUpload } from "image-upload-wc";
+defineImageUpload("image-upload-wc");
 ```
 
 ### Customization
@@ -38,37 +44,32 @@ The `image-upload-wc` component comes with several customizable properties and e
 #### Attributes
 
 - `multiple`: Allows multiple file selection. If this attribute is present, the user can select multiple files.
+- `container-class`: Allows custom class for the main container
+- `label-class`: Allows custom class for the Label
+- `label-text`: Allows custom text for the Label
+- `button-class`: Allows custom class for the Button
+- `button-text`: Allows custom text for the Button
+- `preview-container-class`: Allows custom text for the Preview Image Container
+- `preview-class`: Allows custom text for the Preview Images
 
 #### Example
 
-```html
-<image-uploader multiple></image-uploader>
+```
+<form id="uploadForm" action="/postForm" method="post">
+  <image-upload-wc
+    multiple
+    container-class="custom-container-classname"
+    label-text="Drag and Drop or Click the Button Below"
+    ...
+  >
+  </image-upload-wc>
+  <button type="submit">Submit</button>
+</form>
 ```
 
-<!-- ### Handling Form Submission
+### Handling Form Submission
 
-You can handle form submission by adding an event listener to the form:
-
-```javascript
-document
-  .getElementById("uploadForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-
-    fetch("/your-upload-endpoint", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => {
-        // Handle response
-      })
-      .catch((error) => {
-        // Handle error
-      });
-  });
-``` -->
+Form Submission is intercepted by the component and selected files are added to the form. Errors related to the success of the form submission can be found in the console for now.
 
 ## Development
 
@@ -78,16 +79,21 @@ document
 image-upload-wc/
 |-- src/
 |   |-- index.ts
+|   |-- eventListeners.ts
+|   |-- handlers.ts
+|   |-- icons.ts
+|   |-- imagePreview.ts
+|   |-- ImageUpload.ts
+|   |-- render.ts
 |   |-- styles.ts
-|   |-- form-handler.ts
 |-- tests/
-|   |-- index.test.ts
+|   |-- imageupload.test.ts
 |-- jest.config.js
 |-- jest.setup.ts
 |-- tsconfig.json
 |-- package.json
 |-- README.md
-|-- index.html
+|-- LICENSE
 ```
 
 ### Running Tests
@@ -100,7 +106,7 @@ npm test
 
 ### Building the Project
 
-Compile the typescript into ECMAScript and:
+Compile the typescript into ECMAScript and CommonJS:
 
 ```bash
 npm run compile
