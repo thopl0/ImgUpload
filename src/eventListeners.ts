@@ -24,7 +24,7 @@ export function initEventListeners(component: ImageUpload) {
   const form = this.closest("form");
   if (form) {
     form.addEventListener("submit", (event) =>
-      handleFormSubmit(event, this.selectedFiles)
+      handleFormSubmit(event, component.selectedFiles)
     );
   }
 }
