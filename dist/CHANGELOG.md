@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Added the ability to style the component through user-defined custom classes.
 
-## [2.0.0] - 2023-XX-XX
+## [2.0.0] - 2024-05-27
 
 ### Added
 
@@ -38,7 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - N/A
 
-## [1.0.3] - 2023-XX-XX
+## [1.0.3] - 2024-05-26
 
 ### Added
 
@@ -52,7 +52,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - N/A
 
-## [1.0.2] - 2023-XX-XX
+## [1.0.2] - 2024-05-26
 
 ### Added
 
@@ -66,7 +66,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Fixed path in package.json which resulted in not being able to import the library.
 
-## [1.0.1] - 2023-XX-XX
+## [1.0.1] - 2024-05-26
 
 ### Added
 
@@ -80,7 +80,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - N/A
 
-## [1.0.0] - 2023-XX-XX
+## [1.0.0] - 2024-05-25
 
 ### Added
 
